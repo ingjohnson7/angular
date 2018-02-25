@@ -5,22 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AngularJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
 </head>
 <body>
-    <div ng-app="myApp" ng-controller="myCtrl">
-        <p>Name: <input type="text" ng-model="name"></p>
-        <p ng-bind="name"></p>
-
-        {{ firstName + ' ' + lastName}}
+    <div class="container" ng-app="myApp" ng-controller="myCtrl">
+        <h2>Add a new client</h2>
+        <form action="" class="form col-sm-5 text-center">
+            <label for="Name">Name</label>
+            <input type="text" ng-model="name" class="form-control">
+            <label for="Lastname">Lastname</label>
+            <input type="text" ng-model="lastName" class="form-control">
+            <label for="Phone">Phone</label>
+            <input type="text" ng-model="phone" class="form-control">
+            
+        </form>
+   
     </div>
 
 <script>
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope) {
-        $scope.firstName = 'Jonh';
-        $scope.lastName = 'Doe';
+      
     });
 </script>      
 </body>
