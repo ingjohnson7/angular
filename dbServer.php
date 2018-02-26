@@ -27,7 +27,15 @@ if (isset($_POST) && $_POST['action'] != '') {
         }
 
     } else if($_POST['action'] == 'select') {
-
+        try{
+            $query = "SELECT * FROM clients";    
+            $stm = $con->query($query);
+            $result = $stm->exec();
+    
+            return $result;
+        }catch(PDOException $e){
+            return "Error saving client: " . $e->getMessage();
+        }
     }
 
 

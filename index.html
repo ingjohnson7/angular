@@ -16,22 +16,46 @@
 <body>
     <div class="container" ng-app="myApp" ng-controller="myCtrl">
         <h2>Add a new client</h2>
-        <form action="" class="form col-sm-5 text-center">
+        <form action="" class="form col-sm-5 text-left" name="form1">
             <label for="Name">Name</label>
-            <input type="text" ng-model="name" class="form-control">
+            <input type="text" name="name" ng-model="name" class="form-control">
             <label for="Lastname">Lastname</label>
-            <input type="text" ng-model="lastName" class="form-control">
+            <input type="text" name="lastname" ng-model="lastName" class="form-control">
             <label for="Phone">Phone</label>
-            <input type="text" ng-model="phone" class="form-control">
-            
+            <input type="text" name="phone" ng-model="phone" class="form-control">
+            <span ng-show="form1.phone.$error.email">
+                Not a valid phone number
+            </span>
+            <button class="btn btn-default" ng-click="save($event)">Save</button>
         </form>
-   
+  
+        
+        <pre>
+            {{ name + ' ' + lastName}}
+        </pre>
     </div>
 
 <script>
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope) {
-      
+        $scope.name = '';
+        $scope.lastName = '';
+        $scope.phone = '';
+
+        $scope.save = function(e) {
+            e.preventDefault();
+            console.log('Saving');
+        }; 
+
+        $http({
+            url: 'dbServer.php',
+            method: 'post',
+            data: {
+                action: 'select'
+            }
+        }).then(function(response) {
+
+        });
     });
 </script>      
 </body>
